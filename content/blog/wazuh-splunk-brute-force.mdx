@@ -1,0 +1,120 @@
+---
+title: "Wazuh + Splunk Integration: Detecting Brute-Force in a Proxmox Lab"
+date: "2026-01-15"
+description: "How I deployed Wazuh SIEM and forwarded alerts into Splunk via Universal Forwarder to detect a simulated brute-force attack across 3 endpoints."
+tags: ["Wazuh", "Splunk", "SIEM", "Brute-Force", "Proxmox"]
+readingTime: "8 min read"
+---
+
+## Overview
+
+This write-up covers how I set up a functional SIEM pipeline in my Proxmox home lab using **Wazuh** for log aggregation and alerting, forwarded into **Splunk** via the Universal Forwarder for SPL-based analysis.
+
+Goal: detect a simulated brute-force attack and trace the source IP across 3 endpoints.
+
+---
+
+## Environment
+
+| Component | Role |
+|---|---|
+| Proxmox VE | Hypervisor hosting all VMs |
+| Wazuh Manager | SIEM — log ingestion + rule engine |
+| Wazuh Agents | Deployed on Windows + Linux endpoints |
+| Splunk Enterprise | Dashboards + SPL queries |
+| Universal Forwarder | Ships Wazuh alerts → Splunk |
+| Kali Linux | Adversary simulation |
+
+---
+
+## Step 1: Deploy Wazuh Manager
+
+```bash
+# On Debian-based VM
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+sudo bash ./wazuh-install.sh -a
+```
+
+After installation, the Wazuh dashboard is accessible at `https://<manager-ip>:443`.
+
+Deploy agents on target endpoints and register them to the manager. Confirm with:
+
+```bash
+# On manager
+sudo /var/ossec/bin/agent_control -l
+```
+
+---
+
+## Step 2: Configure Splunk Universal Forwarder
+
+Install the forwarder on the Wazuh manager VM. Point it at the Wazuh alert JSON logs:
+
+```ini
+# /opt/splunkforwarder/etc/system/local/inputs.conf
+[monitor:///var/ossec/logs/alerts/alerts.json]
+disabled = false
+index = wazuh
+sourcetype = wazuh_alerts
+```
+
+Set the receiving indexer:
+
+```ini
+# outputs.conf
+[tcpout]
+defaultGroup = splunk_indexer
+
+[tcpout:splunk_indexer]
+server = <splunk-ip>:9997
+```
+
+---
+
+## Step 3: Simulate the Brute-Force
+
+From Kali, run Hydra against SSH on a Linux endpoint:
+
+```bash
+hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target-ip> -t 4
+```
+
+Wazuh rule `5712` fires immediately: **"SSHD brute force trying to get access to the system"**.
+
+---
+
+## Step 4: SPL Query — Spike Detection
+
+In Splunk, run:
+
+```spl
+index=wazuh rule.id=5712
+| timechart span=1m count by agent.name
+| where count > 10
+```
+
+This surfaces the spike clearly across endpoints. Correlate timestamps with Wazuh alert IDs to confirm the source IP and the attack window.
+
+---
+
+## Results
+
+- Detected spike of **147 failed SSH auth events** in a 2-minute window
+- Source IP traced across all 3 endpoints via correlated Wazuh alert IDs
+- Wazuh active response automatically blocked the source IP via `firewall-drop`
+
+---
+
+## Next Steps
+
+- Map this to **MITRE ATT&CK T1110** (Brute Force) in the coverage tracker
+- Automate case creation in TheHive via Shuffle SOAR on rule `5712` trigger
+- Add AbuseIPDB enrichment step to auto-score the source IP reputation
+
+---
+
+## References
+
+- [Wazuh Documentation](https://documentation.wazuh.com)
+- [Splunk Universal Forwarder Setup](https://docs.splunk.com/Documentation/Forwarder)
+- [MITRE ATT&CK T1110](https://attack.mitre.org/techniques/T1110/)
