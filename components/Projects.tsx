@@ -168,7 +168,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-nord-0/50">
+    <section id="projects" className="py-16 px-6 bg-nord-0/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <p className="text-nord-14 text-xs mb-2 font-mono">// 02_PROJECTS</p>

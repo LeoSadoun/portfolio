@@ -53,7 +53,7 @@ const TIMELINE: TimelineEntry[] = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 bg-nord-0/50">
+    <section id="experience" className="py-16 px-6 bg-nord-0/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <p className="text-nord-14 text-xs mb-2 font-mono">// 04_EXPERIENCE</p>

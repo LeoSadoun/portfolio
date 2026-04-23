@@ -94,7 +94,7 @@ const PROFICIENCY = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-nord-0">
+    <section id="skills" className="py-16 px-6 bg-nord-0">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <p className="text-nord-14 text-xs mb-2 font-mono">// 03_SKILLS_MATRIX</p>

@@ -45,7 +45,7 @@ function SectionHeader({ index, title, sub }: { index: string; title: string; su
 
 export default function Homelab() {
   return (
-    <section id="homelab" className="py-24 px-6 bg-nord-0">
+    <section id="homelab" className="py-16 px-6 bg-nord-0">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="01_HOMELAB"

@@ -10,7 +10,11 @@ const NAV_LINKS = [
   { label: 'blog', href: '/blog' },
 ];
 
-export default function Nav() {
+interface NavProps {
+  onLogoClick?: () => void;
+}
+
+export default function Nav({ onLogoClick }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
@@ -35,6 +39,14 @@ export default function Nav() {
     return () => observers.forEach((o) => o?.disconnect());
   }, []);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (onLogoClick) {
+      e.preventDefault();
+      onLogoClick();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -45,10 +57,14 @@ export default function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Terminal logo */}
-        <Link href="/" className="flex items-center gap-0.5 group select-none">
-          <span className="text-nord-11 text-sm font-semibold">leo</span>
+        <Link 
+          href="/" 
+          onClick={handleLogoClick}
+          className="flex items-center gap-0.5 group select-none"
+        >
+          <span className="text-nord-11 text-sm font-semibold">about</span>
           <span className="text-nord-3 text-sm">@</span>
-          <span className="text-nord-4 text-sm">sadoun</span>
+          <span className="text-nord-4 text-sm">me</span>
           <span className="text-nord-3 text-sm">:~</span>
           <span className="text-nord-8 text-sm">$</span>
           <span className="ml-1 w-[7px] h-[14px] bg-nord-8 animate-blink opacity-90" />
@@ -68,7 +84,6 @@ export default function Nav() {
                     ? 'text-nord-8'
                     : 'text-nord-4 hover:text-nord-8'
                 }`}
-
               >
                 <span
                   className={`absolute left-1 transition-opacity duration-200 text-nord-8 ${
@@ -103,7 +118,8 @@ export default function Nav() {
             </a>
             <a
               href="/leo-sadoun-resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs px-3 py-1.5 border border-nord-14/40 text-nord-14 hover:border-nord-14/70 hover:bg-nord-14/10 transition-all duration-200 rounded"
             >
               resume ↓
