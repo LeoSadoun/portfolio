@@ -66,8 +66,9 @@ export default function Nav() {
                 className={`group relative px-3 py-1.5 text-xs transition-all duration-200 rounded ${
                   isActive
                     ? 'text-nord-8'
-                    : 'text-nord-3 hover:text-nord-4'
+                    : 'text-nord-4 hover:text-nord-8'
                 }`}
+
               >
                 <span
                   className={`absolute left-1 transition-opacity duration-200 text-nord-8 ${
@@ -88,7 +89,7 @@ export default function Nav() {
               href="https://github.com/LeoSadoun"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs px-3 py-1.5 border border-nord-3/50 text-nord-3 hover:border-nord-8/60 hover:text-nord-8 transition-all duration-200 rounded"
+              className="text-xs px-3 py-1.5 border border-nord-6/40 text-nord-6 hover:border-nord-6/70 hover:bg-nord-6/10 transition-all duration-200 rounded"
             >
               github
             </a>
@@ -96,7 +97,7 @@ export default function Nav() {
               href="https://linkedin.com/in/leo-sadoun"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs px-3 py-1.5 border border-nord-3/50 text-nord-3 hover:border-nord-9/60 hover:text-nord-9 transition-all duration-200 rounded"
+              className="text-xs px-3 py-1.5 border border-nord-9/40 text-nord-9 hover:border-nord-9/70 hover:bg-nord-9/10 transition-all duration-200 rounded"
             >
               linkedin
             </a>
@@ -115,7 +116,7 @@ export default function Nav() {
           href="https://github.com/LeoSadoun"
           target="_blank"
           rel="noopener noreferrer"
-          className="md:hidden text-xs text-nord-3 hover:text-nord-8 transition-colors"
+          className="md:hidden text-xs text-nord-4 hover:text-nord-8 transition-colors"
         >
           github ↗
         </a>

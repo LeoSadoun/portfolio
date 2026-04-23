@@ -11,10 +11,10 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           {/* Left: terminal close */}
           <div className="font-mono">
-            <p className="text-nord-3 text-xs mb-1">
+            <p className="text-nord-4 text-xs mb-1">
               <span className="text-nord-14">$</span> exit
             </p>
-            <p className="text-nord-3 text-xs">
+            <p className="text-nord-4 text-xs">
               [Process completed with exit code 0]
             </p>
           </div>
@@ -27,7 +27,7 @@ export default function Footer() {
                 href={l.href}
                 target={l.href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
-                className="text-xs text-nord-3 hover:text-nord-8 transition-colors font-mono"
+                className="text-xs text-nord-4 hover:text-nord-8 transition-colors font-mono"
               >
                 ./{l.label}
               </a>
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Right: built with */}
           <div className="text-right">
-            <p className="text-nord-3 text-xs">
+            <p className="text-nord-4 text-xs">
               Built with{' '}
               <span className="text-nord-8">Next.js</span> ·{' '}
               <span className="text-nord-8">TypeScript</span> ·{' '}
@@ -44,6 +44,7 @@ export default function Footer() {
             </p>
             <p className="text-nord-3/50 text-xs mt-1">© 2026 Leo Sadoun</p>
           </div>
+
         </div>
 
         {/* Bottom: contact line */}

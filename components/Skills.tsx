@@ -62,7 +62,7 @@ function SkillCard({ group }: { group: SkillGroup }) {
       {/* Terminal header */}
       <div className="px-4 py-2.5 bg-nord-1/80 border-b border-nord-3/20 flex items-center gap-2">
         <span className={`text-[10px] font-mono ${group.color}`}>›</span>
-        <span className="text-xs text-nord-3 font-mono">{group.prompt}</span>
+        <span className="text-xs text-nord-4 font-mono">{group.prompt}</span>
       </div>
 
       <div className="p-4">
@@ -97,16 +97,16 @@ export default function Skills() {
     <section id="skills" className="py-24 px-6 bg-nord-0">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-nord-3 text-xs mb-2 font-mono">// 03_SKILLS_MATRIX</p>
+          <p className="text-nord-14 text-xs mb-2 font-mono">// 03_SKILLS_MATRIX</p>
           <h2 className="text-nord-6 text-2xl sm:text-3xl font-bold tracking-tight">Skills</h2>
-          <p className="text-nord-3 text-sm mt-2">Tools, languages, and frameworks — production and lab environments.</p>
+          <p className="text-nord-4 text-sm mt-2">Tools, languages, and frameworks — production and lab environments.</p>
           <div className="mt-4 h-px bg-gradient-to-r from-nord-8/50 via-nord-3/30 to-transparent" />
         </div>
 
         {/* Proficiency bars */}
         <div className="bg-nord-1/40 border border-nord-3/20 rounded-lg overflow-hidden mb-8">
           <div className="px-4 py-2.5 bg-nord-1/80 border-b border-nord-3/20 flex items-center gap-2">
-            <span className="text-xs text-nord-3 font-mono">htop — proficiency_monitor</span>
+            <span className="text-xs text-nord-4 font-mono">htop — proficiency_monitor</span>
             <span className="ml-auto text-xs text-nord-14">● live</span>
           </div>
           <div className="p-5 space-y-4">
@@ -114,7 +114,7 @@ export default function Skills() {
               <div key={item.label}>
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xs text-nord-4 font-mono">{item.label}</span>
-                  <span className="text-xs text-nord-3">{item.pct}%</span>
+                  <span className="text-xs text-nord-4">{item.pct}%</span>
                 </div>
                 <div className="h-1.5 bg-nord-0 rounded-full overflow-hidden border border-nord-3/15">
                   <div
@@ -126,6 +126,7 @@ export default function Skills() {
             ))}
           </div>
         </div>
+
 
         {/* Skill group cards */}
         <div className="grid md:grid-cols-2 gap-6">

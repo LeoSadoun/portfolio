@@ -32,15 +32,16 @@ const VLANS = [
 function SectionHeader({ index, title, sub }: { index: string; title: string; sub?: string }) {
   return (
     <div className="mb-12">
-      <p className="text-nord-3 text-xs mb-2 font-mono">// {index}</p>
+      <p className="text-nord-14 text-xs mb-2 font-mono">// {index}</p>
       <h2 className="text-nord-6 text-2xl sm:text-3xl font-bold tracking-tight">
         {title}
       </h2>
-      {sub && <p className="text-nord-3 text-sm mt-2">{sub}</p>}
+      {sub && <p className="text-nord-4 text-sm mt-2">{sub}</p>}
       <div className="mt-4 h-px bg-gradient-to-r from-nord-8/50 via-nord-3/30 to-transparent" />
     </div>
   );
 }
+
 
 export default function Homelab() {
   return (
@@ -59,7 +60,7 @@ export default function Homelab() {
             <div className="bg-nord-1/50 border border-nord-3/20 rounded-lg overflow-hidden">
               <div className="px-4 py-2.5 bg-nord-1 border-b border-nord-3/20 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-nord-14 animate-pulse" />
-                <span className="text-xs text-nord-3">active_services.sh</span>
+                <span className="text-xs text-nord-4">active_services.sh</span>
                 <span className="ml-auto text-xs text-nord-14">7 running</span>
               </div>
               <div className="p-4 space-y-2.5">
@@ -68,7 +69,7 @@ export default function Homelab() {
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nord-14 shrink-0 group-hover:shadow-[0_0_6px_rgba(163,190,140,0.8)] transition-all" />
                     <div className="flex-1 min-w-0">
                       <span className="text-nord-5 text-sm font-medium">{svc.name}</span>
-                      <span className="text-nord-3 text-xs ml-2">— {svc.desc}</span>
+                      <span className="text-nord-4 text-xs ml-2">— {svc.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -78,21 +79,21 @@ export default function Homelab() {
             {/* Network topology */}
             <div className="bg-nord-1/50 border border-nord-3/20 rounded-lg overflow-hidden">
               <div className="px-4 py-2.5 bg-nord-1 border-b border-nord-3/20 flex items-center gap-2">
-                <span className="text-xs text-nord-3">network_topology.conf</span>
+                <span className="text-xs text-nord-4">network_topology.conf</span>
               </div>
               <div className="p-4">
-                <p className="text-xs text-nord-3 mb-3">VLAN segmentation via Cisco hardware:</p>
+                <p className="text-xs text-nord-4 mb-3">VLAN segmentation via Cisco hardware:</p>
                 <div className="space-y-2">
                   {VLANS.map((v) => (
                     <div key={v.id} className="flex items-center gap-3 text-sm font-mono">
-                      <span className="text-nord-3 w-8">v{v.id}</span>
+                      <span className="text-nord-4 w-8">v{v.id}</span>
                       <span className={`${v.color}`}>──</span>
                       <span className="text-nord-4">{v.name}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 pt-3 border-t border-nord-3/20">
-                  <p className="text-xs text-nord-3">
+                  <p className="text-xs text-nord-4">
                     <span className="text-nord-14">✓</span> SPAN capture confirmed: malware detonation traffic fully contained
                   </p>
                 </div>
@@ -105,11 +106,11 @@ export default function Homelab() {
             {/* MITRE ATT&CK Coverage */}
             <div className="bg-nord-1/50 border border-nord-3/20 rounded-lg overflow-hidden">
               <div className="px-4 py-2.5 bg-nord-1 border-b border-nord-3/20 flex items-center gap-2">
-                <span className="text-xs text-nord-3">mitre_coverage.json</span>
+                <span className="text-xs text-nord-4">mitre_coverage.json</span>
                 <span className="ml-auto text-xs text-nord-11">ATT&CK Framework</span>
               </div>
               <div className="p-4">
-                <p className="text-xs text-nord-3 mb-3">Simulated + detected TTPs:</p>
+                <p className="text-xs text-nord-4 mb-3">Simulated + detected TTPs:</p>
                 <div className="flex flex-wrap gap-2">
                   {TTPS.map((ttp) => (
                     <div
@@ -118,13 +119,13 @@ export default function Homelab() {
                     >
                       <span className="text-nord-11 text-xs font-semibold">{ttp.id}</span>
                       <span className="text-nord-4 text-xs ml-1.5">{ttp.name}</span>
-                      <div className="absolute bottom-full left-0 mb-1 px-2 py-1 bg-nord-0 border border-nord-3/30 rounded text-xs text-nord-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      <div className="absolute bottom-full left-0 mb-1 px-2 py-1 bg-nord-0 border border-nord-3/30 rounded text-xs text-nord-4 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                         {ttp.tactic}
                       </div>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-nord-3 mt-3">
+                <p className="text-xs text-nord-4 mt-3">
                   Used as framework to identify detection gaps and prioritize new Wazuh rules.
                 </p>
               </div>
@@ -133,7 +134,7 @@ export default function Homelab() {
             {/* Certification roadmap */}
             <div className="bg-nord-1/50 border border-nord-3/20 rounded-lg overflow-hidden">
               <div className="px-4 py-2.5 bg-nord-1 border-b border-nord-3/20 flex items-center gap-2">
-                <span className="text-xs text-nord-3">cert_roadmap.sh</span>
+                <span className="text-xs text-nord-4">cert_roadmap.sh</span>
                 <span className="ml-auto text-xs text-nord-13">● In progress</span>
               </div>
               <div className="p-4 space-y-5">
@@ -141,7 +142,7 @@ export default function Homelab() {
                   <div key={cert.name}>
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-nord-5 text-sm">{cert.name}</span>
-                      <span className="text-nord-3 text-xs">{cert.eta}</span>
+                      <span className="text-nord-4 text-xs">{cert.eta}</span>
                     </div>
                     <div className="h-1.5 bg-nord-0 rounded-full overflow-hidden border border-nord-3/20">
                       <div
@@ -157,7 +158,7 @@ export default function Homelab() {
                         }}
                       />
                     </div>
-                    <p className="text-xs text-nord-3 mt-1">{cert.pct}% complete</p>
+                    <p className="text-xs text-nord-4 mt-1">{cert.pct}% complete</p>
                   </div>
                 ))}
               </div>
@@ -165,7 +166,8 @@ export default function Homelab() {
 
             {/* Tools enrichment */}
             <div className="bg-nord-1/50 border border-nord-3/20 rounded-lg p-4">
-              <p className="text-xs text-nord-3 mb-3">Threat intel enrichment (SOAR pipeline):</p>
+              <p className="text-xs text-nord-4 mb-3">Threat intel enrichment (SOAR pipeline):</p>
+
               <div className="flex flex-wrap gap-2">
                 {['VirusTotal API', 'AbuseIPDB API', 'SPL Queries', 'WireGuard VPN', 'OpenVPN', 'Nmap', 'Wireshark', 'Metasploit', 'Nessus', 'Snort'].map((t) => (
                   <span

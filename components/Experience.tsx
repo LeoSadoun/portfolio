@@ -37,18 +37,6 @@ const TIMELINE: TimelineEntry[] = [
     tags: ['SOC', 'Proxmox', 'Mentorship'],
   },
   {
-    org: 'WiCyS',
-    role: 'Member',
-    period: '2023 – Present',
-    location: 'FIU Chapter',
-    color: 'text-nord-15',
-    dotColor: 'bg-nord-15',
-    bullets: [
-      'Active participant in cybersecurity workshops, CTF challenges, and networking events focused on women in cybersecurity.',
-    ],
-    tags: ['CTF', 'Community'],
-  },
-  {
     org: 'AMICON',
     role: 'Estimator Intern',
     period: 'Oct 2022 – Jul 2023',
@@ -68,9 +56,9 @@ export default function Experience() {
     <section id="experience" className="py-24 px-6 bg-nord-0/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-nord-3 text-xs mb-2 font-mono">// 04_EXPERIENCE</p>
+          <p className="text-nord-14 text-xs mb-2 font-mono">// 04_EXPERIENCE</p>
           <h2 className="text-nord-6 text-2xl sm:text-3xl font-bold tracking-tight">Experience</h2>
-          <p className="text-nord-3 text-sm mt-2">Education, internships, and technical involvement.</p>
+          <p className="text-nord-4 text-sm mt-2">Education, internships, and technical involvement.</p>
           <div className="mt-4 h-px bg-gradient-to-r from-nord-8/50 via-nord-3/30 to-transparent" />
         </div>
 
@@ -95,8 +83,8 @@ export default function Experience() {
                       <p className="text-nord-5 text-sm mt-0.5">{entry.role}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-nord-3 text-xs">{entry.period}</p>
-                      <p className="text-nord-3 text-xs opacity-70">{entry.location}</p>
+                      <p className="text-nord-4 text-xs">{entry.period}</p>
+                      <p className="text-nord-4 text-xs opacity-70">{entry.location}</p>
                     </div>
                   </div>
 
@@ -115,7 +103,7 @@ export default function Experience() {
                         {entry.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] px-2 py-0.5 bg-nord-0/60 border border-nord-3/20 text-nord-3 rounded"
+                            className="text-[10px] px-2 py-0.5 bg-nord-0/60 border border-nord-3/20 text-nord-4 rounded"
                           >
                             {tag}
                           </span>
@@ -132,3 +120,4 @@ export default function Experience() {
     </section>
   );
 }
+

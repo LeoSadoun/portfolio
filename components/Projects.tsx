@@ -108,10 +108,10 @@ function ProjectCard({ project }: { project: Project }) {
         <span className="w-2.5 h-2.5 rounded-full" style={{ background: project.accent, opacity: 0.7 }} />
         <span className="w-2.5 h-2.5 rounded-full bg-nord-3/40" />
         <span className="w-2.5 h-2.5 rounded-full bg-nord-3/40" />
-        <span className="ml-2 text-xs text-nord-3 flex-1 truncate">
+        <span className="ml-2 text-xs text-nord-4 flex-1 truncate">
           {project.title.toLowerCase().replace(/ /g, '_')}.sh
         </span>
-        <span className={`text-[10px] px-1.5 py-0.5 border rounded font-mono ${badgeColors[project.badge] ?? 'border-nord-3/40 text-nord-3'}`}>
+        <span className={`text-[10px] px-1.5 py-0.5 border rounded font-mono ${badgeColors[project.badge] ?? 'border-nord-3/40 text-nord-4'}`}>
           {project.badge}
         </span>
       </div>
@@ -121,9 +121,9 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="mb-3">
           <h3 className="text-nord-6 font-bold text-base leading-tight">{project.title}</h3>
           {project.subtitle && (
-            <p className="text-nord-3 text-xs mt-0.5">{project.subtitle}</p>
+            <p className="text-nord-4 text-xs mt-0.5">{project.subtitle}</p>
           )}
-          <p className="text-nord-3 text-xs mt-1 opacity-60">{project.period}</p>
+          <p className="text-nord-4 text-xs mt-1 opacity-60">{project.period}</p>
         </div>
 
         {/* Stack tags */}
@@ -131,7 +131,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.stack.map((t) => (
             <span
               key={t}
-              className="text-[10px] px-2 py-0.5 bg-nord-0/60 border border-nord-3/20 text-nord-3 rounded"
+              className="text-[10px] px-2 py-0.5 bg-nord-0/60 border border-nord-3/20 text-nord-4 rounded"
             >
               {t}
             </span>
@@ -155,7 +155,7 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-nord-3 hover:text-nord-8 transition-colors"
+              className="text-xs text-nord-4 hover:text-nord-8 transition-colors"
             >
               $ open --github ↗
             </a>
@@ -171,15 +171,16 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6 bg-nord-0/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-nord-3 text-xs mb-2 font-mono">// 02_PROJECTS</p>
+          <p className="text-nord-14 text-xs mb-2 font-mono">// 02_PROJECTS</p>
           <h2 className="text-nord-6 text-2xl sm:text-3xl font-bold tracking-tight">
             Projects
           </h2>
-          <p className="text-nord-3 text-sm mt-2">
+          <p className="text-nord-4 text-sm mt-2">
             SOC labs, SOAR pipelines, AI systems, full-stack apps.
           </p>
           <div className="mt-4 h-px bg-gradient-to-r from-nord-8/50 via-nord-3/30 to-transparent" />
         </div>
+
 
         {/* Security projects — featured, larger */}
         <div className="grid md:grid-cols-2 gap-6 mb-6">

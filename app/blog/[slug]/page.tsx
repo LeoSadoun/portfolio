@@ -29,7 +29,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         {/* Back */}
         <Link
           href="/blog"
-          className="text-xs text-nord-3 hover:text-nord-8 transition-colors mb-8 inline-block"
+          className="text-xs text-nord-4 hover:text-nord-8 transition-colors mb-8 inline-block"
         >
           ← back to lab docs
         </Link>
@@ -49,11 +49,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <h1 className="text-nord-6 text-2xl font-bold tracking-tight leading-snug">
             {meta.title}
           </h1>
-          <div className="flex items-center gap-3 mt-3 text-xs text-nord-3">
+          <div className="flex items-center gap-3 mt-3 text-xs text-nord-4">
             <span>{meta.date}</span>
             {meta.readingTime && (
               <>
-                <span>·</span>
+                <span className="text-nord-3">·</span>
                 <span>{meta.readingTime}</span>
               </>
             )}
@@ -68,11 +68,12 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
         {/* Footer nav */}
         <div className="mt-16 pt-6 border-t border-nord-3/15">
-          <Link href="/blog" className="text-xs text-nord-3 hover:text-nord-8 transition-colors">
+          <Link href="/blog" className="text-xs text-nord-4 hover:text-nord-8 transition-colors">
             ← all writeups
           </Link>
         </div>
       </div>
     </main>
+
   );
 }
